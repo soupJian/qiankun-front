@@ -168,6 +168,26 @@ export const qiankun = {
 
 4. 添加 package.json 下的 name 属性
 
+## ant-design-pro 配置
+
+```javascript
+// 参考配置如同 umi 修改config.js
+  qiankun: {
+    slave: {}
+  },
+  publicPath: '/ant-design-pro/',
+  base: '/ant-design-pro/',
+  // 指定项目挂载dom，修改 documnet.ejs中的root
+  mountElementId: 'ant-design-pro',
+  devServer: {
+    port: 8000,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*'
+    },
+  }
+```
+
 ## react 微应用配置
 
 1. 在 `src` 目录新增 `public-path.js`：
