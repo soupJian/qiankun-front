@@ -5,7 +5,7 @@
       <span @click="handleChangeMasterInfo">{{ user.name }}</span>
     </h2>
     <p>
-      新增主应用年龄属性  <input type="number" v-model="age">
+      新增主应用年龄属性  <input type="number" v-model="user.age">
     </p>
   </div>
 </template>
@@ -20,9 +20,9 @@ export default {
   data(){
     return {
       user:{
-        name: ''
+        name: '',
+        age: ''
       },
-      age: ''
     }
   },
   mounted(){
@@ -37,6 +37,11 @@ export default {
           name: this.user.name == '张三' ? '李四' : '张三'
         }
       })//改变全局状态
+    }
+  },
+  computed:{
+    age(){
+      return this.user.age
     }
   },
   watch:{
