@@ -8,6 +8,12 @@
             :key="item.name" 
             @click="goto(item)">{{ item.name }}</li>
       </ul>
+      <div>
+        <span @click="changeName">
+          {{user? user.name : ''}}
+        </span>
+        <span>{{user && user.age ? user.age : ''}}</span>
+      </div>
     </div>
     <div id="container"></div>
   </div>
@@ -15,6 +21,7 @@
 
 <script>
 import microApps from './mirco-apps'
+import actions from './action'
 export default {
   data(){
     return {
@@ -22,12 +29,25 @@ export default {
       current: 'vue'
     }
   },
+  computed:{
+    user(){
+      return this.$store.state.user || null
+    }
+  },
   methods:{
     goto(item){
       this.current = item.name
       history.pushState(null, item.activeRule, `/${item.name}`)
+    },
+    changeName(){
+      // 修改全局信息
+      actions.setGlobalState({
+        user: {
+          name: this.user.name == '张三' ? '李四' : '张三'
+        }
+      })
     }
-  }
+  },
 }
 </script>
 

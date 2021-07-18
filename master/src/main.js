@@ -13,10 +13,13 @@ new Vue({
 }).$mount('#app')
 
 // 导入qiankun内置函数
-import { registerMicroApps, start } from "qiankun"; 
+import { registerMicroApps, setDefaultMountApp,start } from "qiankun"; 
 
 // 注册子应用
 registerMicroApps(microApps)
- 
+
+// 注册初始子应用
+setDefaultMountApp('vue')
+
 // 启动微服务
 start();
